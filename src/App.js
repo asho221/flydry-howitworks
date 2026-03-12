@@ -65,7 +65,6 @@ const App = () => {
       title: "We Collect & Take Care",
       subtitle: "STEP 2: PROCESSING",
       description: "Once we pick up your items, we take them to our facility where we invoice and professionally clean them using premium eco-friendly methods.",
-      // Updated Icon here
       icon: <Shirt className="w-6 h-6 md:w-8 md:h-8" />,
       accent: "#c5a267",
       detail: "Expert handling with premium care"
@@ -87,7 +86,6 @@ const App = () => {
     { day: "Wed", date: "18 Mar", time: "14:00 - 16:00" }
   ];
 
-  // Upgraded useEffect to keep the progress bar in perfect sync with the interactions
   useEffect(() => {
     if (isHovering !== null) return;
     
@@ -99,7 +97,8 @@ const App = () => {
   }, [activeStep, isHovering]);
 
   return (
-    <div className="bg-[#fdfdfd] font-sans text-[#063b2c] py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
+    <div className="bg-[#fdfdfd] font-sans text-[#063b2c] py-16 md:py-24 px-4 sm:px-6 w-full overflow-x-hidden overflow-y-visible">
+      {/* Explicitly set overflow-x-hidden to stop horizontal scrolling, and overflow-y-visible to help site builders read the natural height */}
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -190,7 +189,7 @@ const App = () => {
 
           {/* Right: The Phone Experience */}
           <div className="order-1 lg:order-2 relative flex items-center justify-center pt-8 pb-12 lg:py-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] md:w-full md:h-full max-w-[550px] aspect-square">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] md:w-full md:h-full max-w-[550px] aspect-square pointer-events-none">
                <div className="absolute inset-0 bg-gradient-to-tr from-[#063b2c]/5 to-transparent rounded-full animate-[pulse_8s_ease-in-out_infinite]" />
                <div className="absolute inset-8 md:inset-10 border border-[#063b2c]/10 rounded-full animate-[spin_30s_linear_infinite]" />
                <div className="absolute inset-16 md:inset-20 border-2 border-dashed border-[#c5a267]/10 rounded-full animate-[spin_50s_linear_infinite_reverse]" />
@@ -233,18 +232,13 @@ const App = () => {
                           </div>
                         </div>
 
-                        {/* Step 2 UI: STATIC MACHINE WITH ROTATING GOLDEN BORDER */}
+                        {/* Step 2 UI */}
                         <div className={`absolute inset-0 transition-all duration-1000 flex flex-col items-center justify-center text-center ${
                           activeStep === 1 ? 'scale-100 opacity-100' : 'scale-75 opacity-0 pointer-events-none'
                         }`}>
                           <div className="w-32 h-32 md:w-40 md:h-40 mb-6 md:mb-8 relative flex items-center justify-center">
-                            {/* The Golden Border (Only this rotates now) */}
                             <div className="absolute inset-0 rounded-full border-4 border-[#063b2c]/5 border-t-[#c5a267] animate-spin-slow" />
-                            
-                            {/* Inner pulsing circle (static) */}
                             <div className="absolute inset-2 border border-[#063b2c]/10 rounded-full animate-pulse" />
-                            
-                            {/* Static Machine Frame with Running Drum */}
                             <MiniMachine className="w-20 h-20 md:w-24 md:h-24 text-[#063b2c] relative z-10" />
                           </div>
                           
